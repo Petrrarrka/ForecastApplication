@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="RtlSymmetry">
+
+    <include layout="@layout/toolbar" android:id="@+id/toolbar"/>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srl_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:scrollbarAlwaysDrawVerticalTrack="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/card_view_marginStartEnd"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <TextView
+                        android:id="@+id/tv_temperature"
+                        style="@style/main_value_text_style" />
+
+                    <ImageView
+                        android:id="@+id/iv_current_weather"
+                        style="@style/big_icon_style"
+                        android:layout_marginStart="@dimen/common_marginStartEnd"
+                        android:layout_marginEnd="@dimen/id_image_marginEnd"
+                        android:contentDescription="@string/current_weather"
+                        android:src="@drawable/ic_partly_cloudy" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_current_weather_description"
+                    style="@style/big_text_style" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:id="@+id/iv_feels_like"
+                        android:layout_width="@dimen/small_icon_size"
+                        android:layout_height="@dimen/small_icon_size"
+                        android:background="@drawable/ic_temperature"
+                        android:contentDescription="@string/temperature" />
+
+                    <TextView
+                        android:id="@+id/tv_feels_like"
+                        style="@style/secondary_text_style" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_precipitation"
+                    style="@style/common_text_style"
+                    android:layout_marginTop="22dp"
+                    android:text="@string/no_precipitation" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="6dp"
+                    android:layout_marginTop="12dp"
+                    app:cardCornerRadius="@dimen/card_view_corner_radius">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingVertical="8dp"
+                            android:paddingStart="10dp">
+
+                            <ImageView
+                                android:id="@+id/iv_humidity"
+                                style="@style/medium_icon_style"
+                                android:layout_marginVertical="8dp"
+                                android:contentDescription="@string/humidity"
+                                android:src="@drawable/ic_humidity"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/lbl_humidity"
+                                style="@style/text_label_style"
+                                android:layout_marginStart="10dp"
+                                android:text="@string/humidity"
+                                app:layout_constraintBottom_toTopOf="@id/tv_humidity"
+                                app:layout_constraintStart_toEndOf="@+id/iv_humidity"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_humidity"
+                                style="@style/text_value_style"
+                                android:layout_marginStart="10dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/iv_humidity"
+                                app:layout_constraintTop_toBottomOf="@+id/lbl_humidity" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginVertical="5dp"
+                            android:background="@color/grey" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingVertical="8dp"
+                            android:paddingStart="10dp">
+
+                            <ImageView
+                                android:id="@+id/iv_clouds"
+                                style="@style/medium_icon_style"
+                                android:layout_marginVertical="8dp"
+                                android:contentDescription="@string/clouds"
+                                android:src="@drawable/ic_cloudy"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/lbl_clouds"
+                                style="@style/text_label_style"
+                                android:layout_marginStart="10dp"
+                                android:text="@string/clouds"
+                                app:layout_constraintBottom_toTopOf="@id/tv_clouds"
+                                app:layout_constraintStart_toEndOf="@+id/iv_clouds"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_clouds"
+                                style="@style/text_value_style"
+                                android:layout_marginStart="10dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/iv_clouds"
+                                app:layout_constraintTop_toBottomOf="@+id/lbl_clouds" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginVertical="5dp"
+                            android:background="@color/grey" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingVertical="8dp"
+                            android:paddingStart="10dp">
+
+                            <ImageView
+                                android:id="@+id/iv_wind"
+                                style="@style/medium_icon_style"
+                                android:layout_marginVertical="8dp"
+                                android:contentDescription="@string/wind"
+                                android:src="@drawable/ic_wind"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/lbl_wind"
+                                style="@style/text_label_style"
+                                android:layout_marginStart="10dp"
+                                android:text="@string/wind"
+                                app:layout_constraintBottom_toTopOf="@id/tv_wind"
+                                app:layout_constraintStart_toEndOf="@+id/iv_wind"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_wind"
+                                style="@style/text_value_style"
+                                android:layout_marginStart="10dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/iv_wind"
+                                app:layout_constraintTop_toBottomOf="@+id/lbl_wind" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="6dp"
+                    android:layout_marginTop="6dp"
+                    app:cardCornerRadius="@dimen/card_view_corner_radius">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingVertical="8dp"
+                            android:paddingStart="10dp">
+
+                            <ImageView
+                                android:id="@+id/iv_pressure"
+                                style="@style/medium_icon_style"
+                                android:layout_marginVertical="8dp"
+                                android:contentDescription="@string/pressure"
+                                android:src="@drawable/ic_pressure"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/lbl_pressure"
+                                style="@style/text_label_style"
+                                android:layout_marginStart="10dp"
+                                android:text="@string/pressure"
+                                app:layout_constraintBottom_toTopOf="@id/tv_pressure"
+                                app:layout_constraintStart_toEndOf="@+id/iv_pressure"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_pressure"
+                                style="@style/text_value_style"
+                                android:layout_marginStart="10dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/iv_pressure"
+                                app:layout_constraintTop_toBottomOf="@+id/lbl_pressure" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginVertical="5dp"
+                            android:background="@color/grey" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingVertical="8dp"
+                            android:paddingStart="10dp">
+
+                            <ImageView
+                                android:id="@+id/iv_sunrise"
+                                style="@style/medium_icon_style"
+                                android:layout_marginVertical="8dp"
+                                android:contentDescription="@string/sunrise"
+                                android:src="@drawable/ic_sunrise"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/lbl_sunrise"
+                                style="@style/text_label_style"
+                                android:layout_marginStart="10dp"
+                                android:text="@string/sunrise"
+                                app:layout_constraintBottom_toTopOf="@id/tv_sunrise"
+                                app:layout_constraintStart_toEndOf="@+id/iv_sunrise"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_sunrise"
+                                style="@style/text_value_style"
+                                android:layout_marginStart="10dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/iv_sunrise"
+                                app:layout_constraintTop_toBottomOf="@+id/lbl_sunrise" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginVertical="5dp"
+                            android:background="@color/grey" />
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:paddingVertical="8dp"
+                            android:paddingStart="10dp">
+
+                            <ImageView
+                                android:id="@+id/iv_sunset"
+                                style="@style/medium_icon_style"
+                                android:layout_marginVertical="8dp"
+                                android:contentDescription="@string/sunset"
+                                android:src="@drawable/ic_sunset"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/lbl_sunset"
+                                style="@style/text_label_style"
+                                android:layout_marginStart="10dp"
+                                android:text="@string/sunset"
+                                app:layout_constraintBottom_toTopOf="@id/tv_sunset"
+                                app:layout_constraintStart_toEndOf="@+id/iv_sunset"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/tv_sunset"
+                                style="@style/text_value_style"
+                                android:layout_marginStart="10dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/iv_sunset"
+                                app:layout_constraintTop_toBottomOf="@+id/lbl_sunset" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_daily"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:scrollbars="vertical" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <ProgressBar
+        android:id="@+id/pb_loading"
+        style="@style/progress_bar_style"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/tv_message"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_error"
+        style="@style/big_icon_style"
+        android:layout_marginBottom="0dp"
+        android:contentDescription="@string/error"
+        android:src="@drawable/ic_thunderstorm"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/tv_message"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tint="@color/red" />
+
+    <TextView
+        android:id="@+id/tv_message"
+        style="@style/error_text_style"
+        android:layout_marginTop="20dp"
+        android:text="@string/loading_your_forecast"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/srl_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bt_refresh"
+        style="@style/common_button_Style"
+        android:layout_marginTop="16dp"
+        android:text="@string/refresh"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_message" />
+</androidx.constraintlayout.widget.ConstraintLayout>
